@@ -1,0 +1,15 @@
+{
+  "postgres": {
+    "dialect": "postgres",
+    "host": "localhost",
+    "username": "postgres",
+    "password": "Postgres2018!",
+    "database": "family_foods",
+    "logging": false,
+    "define": {
+      "timestamps": true,
+      "underscored": true
+    }
+  },
+  "jwtSecret": "l*7h*/$%Aasd7h1#@h12hj7Qj12"
+}

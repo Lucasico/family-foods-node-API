@@ -14,4 +14,7 @@ module.exports = (server) => {
 
   //cidades
   require("../../src/cidades/cidades-route")(server);
+
+  //auth
+  require("../../src/auth/auth-route")(server);
 };

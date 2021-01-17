@@ -1,11 +1,13 @@
-//const User = require("./user-model");
-//store, list,
 const { Users } = require("./user-model");
 const { Permissoes } = require("../permissoes/permissoes-model");
 const { Cidades } = require("../cidades/cidades-model");
 const getValidationErrors = require("../utils/getValidationErrors");
 const schema = require("./user-validation-schema");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const config = require("config");
+const jwtKey = config.get("jwtSecret");
+
 module.exports = {
   store: async (req, res) => {
     try {
@@ -14,13 +16,10 @@ module.exports = {
         where: { email: req.body.email },
       });
       if (checkEmail) {
-        return res.status(400).json({ data: "Email já utilizado!" });
+        return res.status(400).json({ data: "Usuário já existe" });
       }
       const hash = await bcrypt.hash(req.body.password, 10);
       req.body.password = hash;
-      /**
-       * pra comparar e so fazer (await bcrypt.compare(senhaDigita, senhaSalvaNoBD))
-       */
       const user = await Users.create(req.body);
       let userCreate = null;
       if (user) {
@@ -51,4 +50,5 @@ module.exports = {
       res.status(500).json({ err });
     }
   },
+
 };

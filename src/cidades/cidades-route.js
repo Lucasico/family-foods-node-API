@@ -1,5 +1,4 @@
 const cidadeService = require("./cidades-service");
-
 module.exports = (server) => {
   const PATHSERVICE = "/estados/";
 

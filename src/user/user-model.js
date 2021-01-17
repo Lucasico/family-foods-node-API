@@ -51,6 +51,7 @@ Users.init(
     timestamps: true,
   }
 );
+
 Users.belongsTo(Permissoes, {
   foreignKey: {
     name: "permissao_id",

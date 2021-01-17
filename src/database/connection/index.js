@@ -1,7 +1,8 @@
 const Sequelize = require("sequelize");
-const dbConfig = require("../../../config/databaseConfig");
+const config = require("config");
+const db = config.get("postgres");
 
-const sequelizeConnection = new Sequelize(dbConfig.development);
+const sequelizeConnection = new Sequelize(db);
 sequelizeConnection
   .authenticate()
   .then(console.log(`Conectado com sucesso ao POSTGRES!`))

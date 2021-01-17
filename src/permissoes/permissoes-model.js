@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const Model = Sequelize.Model;
-
+const { Users } = require("../user/user-model");
 const sequelizeConnection = require("../database/connection");
 
 class Permissoes extends Model {}
@@ -26,4 +26,5 @@ Permissoes.init(
     freezeTableName: true,
   }
 );
+
 exports.Permissoes = Permissoes;
